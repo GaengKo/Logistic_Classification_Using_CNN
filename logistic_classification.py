@@ -62,7 +62,7 @@ np.save("./numpy_data/logistic_image_data.npy", xy)
 
 
 from keras.models import Sequential
-from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout
+from keras.layers import Conv2D, MaxPooling2D, Dense, Flatten, Dropout, GlobalAveragePooling2D
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 import matplotlib.pyplot as plt
 import keras.backend.tensorflow_backend as K
@@ -94,7 +94,7 @@ with K.tf_ops.device('/device:GPU:0'):
     model.add(Conv2D(64, (3,3), padding="same", activation="relu"))
     model.add(MaxPooling2D(pool_size=(2,2)))
     model.add(Dropout(0.25))
-
+    model.add()
     model.add(Flatten())
     model.add(Dense(256, activation="relu"))
     model.add(Dropout(0.5))
